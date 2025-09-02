@@ -1,4 +1,3 @@
-// src/pages/HomePage.tsx
 import React from "react";
 import {
   IonPage,
@@ -6,7 +5,6 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonMenuButton,
   IonButtons,
   IonCard,
   IonCardHeader,
@@ -20,18 +18,32 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  RefresherEventDetail,
+  IonRefresher,
+  IonRefresherContent,
 } from "@ionic/react";
-import {
-  notificationsOutline,
-  chevronForward,
-} from "ionicons/icons";
+import { notificationsOutline, chevronForward } from "ionicons/icons";
 import "./HomePage.css";
-import { useResponsive } from "../../hooks/useResponsive";
-import { useHistory } from "react-router";
+import { useAuth } from "../../hooks/useAuth";
+import { ApiResponse, useApi } from "../../hooks/useApi";
+import { Stat } from "../../types/auth";
+import { formatDate } from "../../utils/helpers";
 
 const HomePage: React.FC = () => {
-  const { isDesktop } = useResponsive();
-  const history = useHistory();
+  const { user } = useAuth();
+  const { useGet } = useApi();
+
+  const { data, refetch } = useGet<ApiResponse<Stat>>(
+    ["stats"],
+    `access-codes/stats`
+  );
+
+  const statInformation = data?.data;
+
+  const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
+    await refetch();
+    event.detail.complete();
+  };
 
   return (
     <IonPage>
@@ -56,8 +68,16 @@ const HomePage: React.FC = () => {
       </IonHeader>
 
       <IonContent className="ion-padding">
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent
+            pullingIcon="chevron-down-circle-outline"
+            pullingText="Pull to stats"
+            refreshingSpinner="circular"
+            refreshingText="loading..."
+          />
+        </IonRefresher>
         <div className="welcome-section">
-          <h1>Welcome, Sarah</h1>
+          <h1>Welcome, {user?.first_name}</h1>
           <p>What would you like to do today?</p>
         </div>
 
@@ -126,13 +146,17 @@ const HomePage: React.FC = () => {
                 <IonRow className="stats-row">
                   <IonCol className="stat-col">
                     <div className="stat-box">
-                      <div className="stat-number">3</div>
+                      <div className="stat-number">
+                        {statInformation?.active_codes}{" "}
+                      </div>
                       <div className="stat-label">Active Codes</div>
                     </div>
                   </IonCol>
                   <IonCol className="stat-col">
                     <div className="stat-box">
-                      <div className="stat-number">12</div>
+                      <div className="stat-number">
+                        {statInformation?.monthly_visitors}{" "}
+                      </div>
                       <div className="stat-label">Visitors This Month</div>
                     </div>
                   </IonCol>
@@ -148,32 +172,27 @@ const HomePage: React.FC = () => {
               </IonCardTitle>
             </IonCardHeader>
             <IonCardContent className="activity-card">
-              <IonItem lines="none">
-                <div className="recent-icon">
-                  <img
-                    src="/div (2).svg"
-                    alt="Greenwich Garden Estates Logo"
-                    className="logo-image"
-                  />
-                </div>
-                <IonLabel>
-                  <h3>John Smith checked in</h3>
-                  <p>Today, 2:35 PM</p>
-                </IonLabel>
-              </IonItem>
-              <IonItem lines="none">
-                <div className="recent-icon">
-                  <img
-                    src="/div (3).svg"
-                    alt="Greenwich Garden Estates Logo"
-                    className="logo-image"
-                  />
-                </div>
-                <IonLabel>
-                  <h3>Code generated for Amazon</h3>
-                  <p>Today, 10:30 AM</p>
-                </IonLabel>
-              </IonItem>
+              {statInformation?.activities?.map((activity, index) => (
+                <IonItem lines="none" key={index}>
+                  <div className="recent-icon">
+                    <img
+                      src={
+                        activity?.message.includes("Access code")
+                          ? "/div (3).svg"
+                          : "/div (2).svg"
+                      }
+                      alt="Greenwich Garden Estates Logo"
+                      className="logo-image"
+                    />
+                  </div>
+                  <IonLabel>
+                    <h3>{activity?.message} </h3>
+                    <p>
+                      {activity?.time && formatDate(activity?.time?.toString())}{" "}
+                    </p>
+                  </IonLabel>
+                </IonItem>
+              ))}
             </IonCardContent>
           </IonCard>
         </div>

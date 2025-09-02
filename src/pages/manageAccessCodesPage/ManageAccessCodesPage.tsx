@@ -16,13 +16,13 @@ import {
 import { arrowBack, trash, close } from "ionicons/icons";
 import "./ManageAccessCodesPage.css";
 import AlertModal from "../../components/ui/alertModal/AlertModal";
-import ShareModal from "../../components/ui/shareAccessCodeModal.tsx/ShareAccessCodeModal";
 import { useApi } from "../../hooks/useApi";
 import { AccessCode } from "../../types";
 import { useHistory } from "react-router";
 import FilterBar from "../../components/manageAccessCode/FilterBar";
 import EmptyState from "../../components/manageAccessCode/EmptyState";
 import CodeCard from "../../components/manageAccessCode/CodeCard";
+import ShareModal from "../../components/ui/shareAccessCodeModal.tsx copy/ShareAccessCodeModal";
 
 const ManageAccessCodesPage: React.FC = () => {
   const history = useHistory();

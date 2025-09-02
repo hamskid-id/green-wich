@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IonPage, IonContent, IonText, IonToast, IonIcon } from "@ionic/react";
+import { IonPage, IonContent, IonText, IonToast } from "@ionic/react";
 import { call, lockClosed, person, home } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";

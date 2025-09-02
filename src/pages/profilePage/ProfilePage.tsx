@@ -28,6 +28,7 @@ import { ApiResponse, useApi } from "../../hooks/useApi";
 import ProfileCard from "../../components/profilePage/ProfileCard";
 import ProfileInfo from "../../components/profilePage/ProfileInfo";
 import ProfileActions from "../../components/profilePage/ProfileActions";
+import CustomButton from "../../components/ui/customButton/CustomButton";
 
 const AppHeader: React.FC = () => (
   <IonHeader className="app-header">
@@ -72,14 +73,14 @@ const ProfilePage: React.FC = () => {
           <div className="error-state" role="alert">
             <div className="error-content">
               <h2>Unable to Load Profile</h2>
-              <IonButton
+              <CustomButton
                 onClick={() => refetch()}
                 color="primary"
                 aria-label="Retry loading profile"
               >
                 <IonIcon icon={refreshOutline} slot="start" />
                 Try Again
-              </IonButton>
+              </CustomButton>
             </div>
           </div>
         </IonContent>

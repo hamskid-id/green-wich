@@ -30,8 +30,6 @@ interface CreateCodeRequest {
 const CreateVisitorCodePage: React.FC = () => {
   const [visitorName, setVisitorName] = useState<string>("");
   const [visitPurpose, setVisitPurpose] = useState<string>("");
-  const [startTime, setStartTime] = useState<string>("");
-  const [endTime, setEndTime] = useState<string>("");
   const [notes, setNotes] = useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
@@ -45,7 +43,7 @@ const CreateVisitorCodePage: React.FC = () => {
   );
 
   const handleGenerateCode = async (): Promise<void> => {
-    if (!visitorName || !startTime || !endTime) {
+    if (!visitorName) {
       setToastMessage("Please fill in all required fields");
       setShowToast(true);
       return;
@@ -55,8 +53,6 @@ const CreateVisitorCodePage: React.FC = () => {
       const requestData: CreateCodeRequest = {
         visitor_name: visitorName,
         visit_purpose: visitPurpose,
-        start_time: startTime,
-        end_time: endTime,
         notes: notes,
       };
 
@@ -64,7 +60,7 @@ const CreateVisitorCodePage: React.FC = () => {
       console.log(response);
       // Navigate to success page with the generated code data
       history.push("/success-code", {
-        codeData: { ...response?.data, startTime, endTime, notes },
+        codeData: { ...response?.data, notes },
       });
     } catch (error: any) {
       setToastMessage(
@@ -74,7 +70,7 @@ const CreateVisitorCodePage: React.FC = () => {
     }
   };
 
-  const isFormValid = visitorName.trim() && startTime && endTime;
+  const isFormValid = visitorName.trim();
 
   return (
     <IonPage>
@@ -114,26 +110,6 @@ const CreateVisitorCodePage: React.FC = () => {
           value={visitPurpose}
           onIonInput={(e) => setVisitPurpose(e.detail.value!)}
           placeholder="Select purpose"
-        />
-
-        <CustomInput
-          icon={calendar}
-          label="Start Time"
-          type="datetime-local"
-          value={startTime}
-          onIonInput={(e) => setStartTime(e.detail.value!)}
-          placeholder="mm/dd/yyyy --:-- --"
-          required
-        />
-
-        <CustomInput
-          icon={calendar}
-          label="End Time"
-          type="datetime-local"
-          value={endTime}
-          onIonInput={(e) => setEndTime(e.detail.value!)}
-          placeholder="mm/dd/yyyy --:-- --"
-          required
         />
 
         <CustomInput

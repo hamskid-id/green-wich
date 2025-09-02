@@ -30,7 +30,8 @@ import {
   formatTimeDisplay,
   formatTimeRemaining,
 } from "../../utils/helpers";
-import ShareModal from "../../components/ui/shareAccessCodeModal.tsx/ShareAccessCodeModal";
+import ShareModal from "../../components/ui/shareAccessCodeModal.tsx copy/ShareAccessCodeModal";
+
 interface LocationState {
   codeData: AccessCode;
 }
@@ -51,11 +52,6 @@ const CodeGeneratedSuccessPage: React.FC = () => {
   // Calculate expiration time once on mount
   const expirationTime = useMemo(() => {
     if (!codeData) return null;
-
-    // If we have startTime/endTime, use endTime as expiration
-    if (codeData.end_time) {
-      return new Date(codeData.end_time).getTime();
-    }
 
     // Otherwise calculate based on expires_in
     if (codeData.expires_in) {
@@ -95,11 +91,6 @@ const CodeGeneratedSuccessPage: React.FC = () => {
 
   // Determine what time information to display
   const getTimeDisplayText = () => {
-    if (codeData?.start_time && codeData?.end_time) {
-      return `${formatTimeDisplay(codeData.start_time)} - ${formatTimeDisplay(
-        codeData.end_time
-      )}`;
-    }
 
     if (isExpired) {
       return "Expired";

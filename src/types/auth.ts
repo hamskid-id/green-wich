@@ -1,5 +1,3 @@
-
-// types/auth.ts
 export interface User {
   id: string;
   first_name: string;
@@ -85,4 +83,13 @@ export interface AuthStorageState {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
+}
+
+export interface Stat {
+  monthly_visitors: number;
+  active_codes: number;
+  activities: {
+    message: string;
+    time: Date;
+  }[];
 }
