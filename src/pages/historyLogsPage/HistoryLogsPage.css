@@ -1,4 +1,42 @@
-/* HistoryLogsPage.css */
+.app-header {
+  --background: #ffffff;
+  position: relative;
+  z-index: 10;
+  box-shadow: none !important;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 49px;
+  padding: 0px 14px;
+}
+
+.app-header ion-title {
+    padding-inline-end: 0px !important;
+    padding-inline-start: 0px !important;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 0;
+}
+
+.header-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    color: #606060;
+    line-height: 16px;
+}
+
+.header-title {
+  font-size: 18px !important;
+  font-weight: 600;
+  margin: 0;
+  color: #004225 !important;
+  line-height: 28px;
+  padding-inline-end: 0px !important;
+  padding-inline-start: 0px !important;
+}
 
 .history-header-title {
   display: flex;
@@ -41,8 +79,8 @@
 }
 
 .visitor-log-item {
---background: #ffffff;
-  --border-color: #E0E0E0;
+  --background: #ffffff;
+  --border-color: #e0e0e0;
   --border-radius: 12px;
   --padding-start: 16px;
   --padding-end: 16px;
@@ -50,10 +88,10 @@
   --min-height: auto;
   margin-bottom: 12px;
   box-shadow: none;
-  
+
   /* Force the actual CSS properties */
   border-radius: 12px !important;
-  border: 1px solid #E0E0E0 !important;
+  border: 1px solid #e0e0e0 !important;
   overflow: hidden !important;
 }
 
@@ -112,7 +150,7 @@ ion-chip[color="primary"] {
 
 ion-chip[color="success"] {
   --background: #2dd36f20;
-  --color: #00C48C;
+  --color: #00c48c;
 }
 
 ion-chip[color="medium"] {
@@ -138,11 +176,11 @@ ion-chip[color="medium"] {
   .visitor-name {
     font-size: 15px;
   }
-  
+
   .visitor-datetime {
     font-size: 13px;
   }
-  
+
   .status-chip {
     font-size: 11px;
   }

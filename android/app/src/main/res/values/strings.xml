@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">green-wich</string>
+    <string name="title_activity_main">green-wich</string>
+    <string name="package_name">com.hamskid.greenwichApp</string>
+    <string name="custom_url_scheme">com.hamskid.greenwichApp</string>
+</resources>

@@ -124,7 +124,7 @@ const HistoryLogsPage: React.FC = () => {
         </IonRefresher>
 
         <div className="search-container">
-         <IonSearchbar
+          <IonSearchbar
             value={searchText}
             onIonInput={(e) => setSearchText(e.detail.value!)}
             placeholder="Search visitor logs..."
