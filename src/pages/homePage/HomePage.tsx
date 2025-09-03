@@ -56,7 +56,7 @@ const HomePage: React.FC = () => {
             </div>
           </IonTitle>
           <IonButtons slot="end">
-            <IonButton routerLink="/notifications" className="notification-btn">
+            <IonButton className="notification-btn">
               <IonIcon icon={notificationsOutline} />
               <IonBadge
                 color="success"
@@ -111,7 +111,11 @@ const HomePage: React.FC = () => {
           </IonCard>
 
           {/* View Visitor History Card */}
-          <IonCard className="action-card" button routerLink="/history-logs">
+          <IonCard
+            className="action-card"
+            button
+            routerLink="/manage-acess-codes"
+          >
             <IonCardContent className="card-content-wrapper">
               <div className="action-icon">
                 <img
@@ -121,9 +125,9 @@ const HomePage: React.FC = () => {
                 />
               </div>
               <div className="card-text-content">
-                <IonCardTitle>View Visitor History</IonCardTitle>
+                <IonCardTitle>View Access code History</IonCardTitle>
                 <p className="card-description">
-                  See past and upcoming visitors
+                  See past and active codes
                 </p>
               </div>
               <IonIcon

@@ -11,7 +11,7 @@ import { Route, Redirect } from "react-router-dom";
 import {
   home,
   qrCodeOutline,
-  notificationsOutline,
+  // notificationsOutline,
   person,
 } from "ionicons/icons";
 import HomePage from "../../pages/homePage/HomePage";
@@ -66,10 +66,10 @@ const MobileLayout: React.FC = () => {
           <IonLabel>Codes</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="notifications" href="/notifications">
+        {/* <IonTabButton tab="notifications" href="/notifications">
           <IonIcon icon={notificationsOutline} />
           <IonLabel>Notifications</IonLabel>
-        </IonTabButton>
+        </IonTabButton> */}
 
         <IonTabButton tab="profile" href="/profile">
           <IonIcon icon={person} />
