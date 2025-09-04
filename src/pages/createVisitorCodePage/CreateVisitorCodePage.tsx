@@ -31,7 +31,7 @@ interface CreateCodeRequest {
   start_time?: string;
   end_time?: string;
   notes?: string;
-  is_multiple_visitor?: boolean;
+  multiple_persons?: boolean;
   visitor_count?: number;
 }
 
@@ -72,7 +72,7 @@ const CreateVisitorCodePage: React.FC = () => {
         visitor_name: visitorName,
         visit_purpose: visitPurpose,
         notes: notes,
-        is_multiple_visitor: isMultipleVisitor,
+        multiple_persons: isMultipleVisitor,
         ...(isMultipleVisitor && { visitor_count: parseInt(visitorCount) }),
       };
 
