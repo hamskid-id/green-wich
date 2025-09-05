@@ -19,6 +19,7 @@ import {
 } from "ionicons/icons";
 import { useAuthStore } from "../../stores/authStore";
 import AlertModal from "../ui/alertModal/AlertModal";
+import { useHistory } from "react-router";
 
 interface ProfileActionsProps {
   onEditProfile?: () => void;
@@ -29,15 +30,16 @@ interface ProfileActionsProps {
 }
 
 const ProfileActions: React.FC<ProfileActionsProps> = ({
-  onEditProfile,
-  onChangePassword,
-  onSettings,
-  onHelp,
+  // onEditProfile,
+  // onChangePassword,
+  // onSettings,
+  // onHelp,
   className = "",
 }) => {
   const [showLogoutAlert, setShowLogoutAlert] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const { logout } = useAuthStore();
+  const history = useHistory();
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -46,7 +48,7 @@ const ProfileActions: React.FC<ProfileActionsProps> = ({
     } catch (error) {
       console.error("Logout failed:", error);
     } finally {
-      window.location.href = "/login";
+      history.replace("/login");
       setIsLoggingOut(false);
       setShowLogoutAlert(false);
     }

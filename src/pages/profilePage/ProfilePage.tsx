@@ -1,12 +1,10 @@
-// src/pages/ProfilePage.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   IonPage,
   IonContent,
   IonRefresher,
   IonRefresherContent,
   IonToast,
-  IonButton,
   IonIcon,
   IonSkeletonText,
   IonHeader,
@@ -55,7 +53,7 @@ const ProfilePage: React.FC = () => {
   const handleRefresh = async (event: CustomEvent<RefresherEventDetail>) => {
     await refetch();
     event.detail.complete();
-  }
+  };
 
   const getDisplayName = (): string => {
     if (!profileInformation) return "User";

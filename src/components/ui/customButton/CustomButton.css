@@ -71,3 +71,8 @@ ion-button.custom-button-secondary[disabled] {
   --border-color: #004225 !important;
   opacity: 0.7;
 }
+
+.button-flex {
+  display: flex;
+  align-items: center;
+}

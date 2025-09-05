@@ -77,8 +77,6 @@ const CreateVisitorCodePage: React.FC = () => {
       };
 
       const response = await createCodeMutation.mutateAsync(requestData);
-      console.log(response);
-      // Navigate to success page with the generated code data
       history.push("/success-code", {
         codeData: {
           ...response?.data,
@@ -200,7 +198,7 @@ const CreateVisitorCodePage: React.FC = () => {
           message={toastMessage}
           duration={3000}
           cssClass={
-            toastMessage.includes("Failed") ? "toast-error" : "toast-success"
+            createCodeMutation.isError ? "toast-error" : "toast-success"
           }
         />
       </IonContent>
