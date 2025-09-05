@@ -47,8 +47,10 @@ const ManageAccessCodesPage: React.FC = () => {
     { limit: 25 }
   );
 
-  const { mutate: deleteCode, isPending: isDeleting } =
-    useDynamicDelete<void>();
+  const {
+    mutate: deleteCode,
+    error: deleteError,
+  } = useDynamicDelete<void>();
   const rawCodes = data?.pages.flatMap((page) => page.data.data) ?? [];
 
   const processedCodes = useMemo(() => {
@@ -78,19 +80,21 @@ const ManageAccessCodesPage: React.FC = () => {
 
   const filteredCodes = useMemo(() => {
     let codes = processedCodes;
-    
+
     if (activeFilter !== "all") {
       codes = codes.filter((code) => code.status === activeFilter);
     }
-    
+
     // Sort codes: active codes first, then sort by creation date (newest first)
     return codes.sort((a, b) => {
       // Prioritize active status
       if (a.status === "active" && b.status !== "active") return -1;
       if (a.status !== "active" && b.status === "active") return 1;
-      
+
       // For same status, sort by creation date (newest first)
-      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      return (
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
     });
   }, [processedCodes, activeFilter]);
 
@@ -236,7 +240,7 @@ const ManageAccessCodesPage: React.FC = () => {
           message={toastMessage}
           duration={2000}
           position="bottom"
-          cssClass="toast-info"
+          cssClass={deleteError ? "toast-danger" : "toast-sucess"}
         />
       </IonContent>
     </IonPage>
