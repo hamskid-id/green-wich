@@ -3,5 +3,12 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "react-vite"
+  "type": "react-vite",
+  "plugins": {
+    "Keyboard": {
+      "resize": "ionic",
+      "scrollAssist": true,
+      "scrollPadding": false
+    }
+  }
 }
