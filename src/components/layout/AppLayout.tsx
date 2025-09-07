@@ -11,7 +11,6 @@ import { Route, Redirect } from "react-router-dom";
 import {
   home,
   qrCodeOutline,
-  // notificationsOutline,
   person,
 } from "ionicons/icons";
 import HomePage from "../../pages/homePage/HomePage";

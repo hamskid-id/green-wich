@@ -1,6 +1,5 @@
-import React from "react";
 import { IonRouterOutlet } from "@ionic/react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import LoginPage from "../../pages/auth/LoginPage";
 import ForgotPasswordPage from "../../pages/auth/ForegetPassword";
 import VerifyEmailPage from "../../pages/auth/VerifyEmailPage";
@@ -13,14 +12,6 @@ const AuthLayout = () => {
       <Route path="/register" component={RegisterPage} exact />
       <Route path="/forgot-password" component={ForgotPasswordPage} exact />
       <Route path="/verify-email" component={VerifyEmailPage} exact />
-
-      {/* Default to login */}
-      <Route exact path="/">
-        <Redirect to="/login" />
-      </Route>
-
-      {/* Catch-all: any other path redirects to login */}
-      <Route render={() => <Redirect to="/login" />} />
     </IonRouterOutlet>
   );
 };
