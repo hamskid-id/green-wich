@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IonCard,
   IonCardContent,
   IonBadge,
   IonLabel,
   IonIcon,
+  IonToast,
 } from "@ionic/react";
-import { arrowRedoSharp, trashOutline } from "ionicons/icons";
+import {
+  arrowRedoSharp,
+  trashOutline,
+  copyOutline,
+  checkmarkSharp,
+} from "ionicons/icons";
 import { AccessCode } from "../../types";
 import { formatDate } from "../../utils/helpers";
 
@@ -31,6 +37,18 @@ const getStatusColor = (status: string) => {
 
 const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
   const isActive = code.status === "active" && code.remaining?.value! > 0;
+
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
 
   return (
     <IonCard className="code-card">
@@ -75,11 +93,30 @@ const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
 
         <div className="created-code-row">
           <IonLabel>{formatDate(code.created_at)}</IonLabel>
-          <IonLabel>
-            <strong>Code: {code.code}</strong>
-          </IonLabel>
+          <div className="code-copy">
+            <IonLabel>
+              <strong>Code: {code.code}</strong>
+            </IonLabel>
+            <button
+              className="action-button copy"
+              aria-label={`Copy code ${code.code}`}
+              onClick={handleCopy}
+            >
+              <IonIcon icon={copied ? checkmarkSharp : copyOutline} />
+            </button>
+          </div>
         </div>
       </IonCardContent>
+
+      {/* Toast for copy feedback */}
+      <IonToast
+        isOpen={copied}
+        onDidDismiss={() => setCopied(false)}
+        message="Code copied to clipboard!"
+        duration={1500}
+        position="top"
+        color="success"
+      />
     </IonCard>
   );
 };

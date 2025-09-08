@@ -1,3 +1,6 @@
+import { AxiosResponse } from "axios";
+import { ApiResponse } from ".";
+
 export interface User {
   id: string;
   first_name: string;
@@ -25,7 +28,7 @@ export interface RegisterCredentials {
 
 export interface LoginResponse {
   user: User;
-  token: string;
+  access_token: string;
   expiresIn: number;
 }
 
@@ -64,7 +67,9 @@ export interface AuthState {
   verifyEmail: (email: string, code: string) => Promise<void>;
   resendVerificationCode: (email: string) => Promise<void>;
   register: (registerData: RegisterCredentials) => Promise<void>;
-  login: (credentials: LoginCredentials) => Promise<void>;
+  login: (
+    credentials: LoginCredentials
+  ) => Promise<AxiosResponse<ApiResponse<LoginResponse>>>;
   logout: () => void;
   checkAuth: () => Promise<void>;
   clearError: () => void;

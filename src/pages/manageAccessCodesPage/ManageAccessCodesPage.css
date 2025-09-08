@@ -1,6 +1,7 @@
 /* src/pages/ManageAccessCodesPage.css */
 * {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
 }
 
 /* Header Styles */
@@ -9,7 +10,7 @@
   position: relative;
   z-index: 10;
   box-shadow: none !important;
-  border-bottom: 1px solid #E5E7EB;
+  border-bottom: 1px solid #e5e7eb;
   min-height: 49px;
   padding: 0px 14px;
 }
@@ -25,7 +26,7 @@
 
 .app-header ion-title {
   padding-inline-end: 0px !important;
-    padding-inline-start: 0px !important;
+  padding-inline-start: 0px !important;
 }
 
 .header-title {
@@ -66,7 +67,7 @@
 .filter-button {
   padding: 12px 18px;
   border-radius: 20px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   background-color: white;
   color: #525252;
   font-size: 14px;
@@ -100,9 +101,9 @@
 
 .code-card {
   border-radius: 12px;
-  box-shadow:none;
+  box-shadow: none;
   margin: 0;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 
 .code-card ion-card-content {
@@ -143,7 +144,7 @@
 }
 
 .status-badge::before {
-  content: '';
+  content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -185,7 +186,7 @@
 /* Status and expires row */
 .status-row {
   display: flex;
-  gap:7px;
+  gap: 7px;
   align-items: center;
   margin-bottom: 8px;
 }
@@ -246,14 +247,14 @@
 
 .action-button.share {
   color: #004225;
-  background-color: #0042251A;
-    border-radius: 9999px;
+  background-color: #0042251a;
+  border-radius: 9999px;
 }
 
 .action-button.delete {
- background-color: #0042251A;
-    border-radius: 9999px;
-    color: #004225;
+  background-color: #0042251a;
+  border-radius: 9999px;
+  color: #004225;
 }
 
 .action-button:hover {
@@ -292,4 +293,10 @@ ion-button[slot="start"] {
   opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+.code-copy{
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }

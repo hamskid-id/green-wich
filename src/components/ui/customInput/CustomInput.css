@@ -54,15 +54,15 @@ ion-item.multiline.custom-input-item {
 
 .input-icon {
   color: #999;
-  font-size: 16px !important;
-  margin-right: 12px;
+  font-size: 12px !important;
+  margin-right: 12px !important;
 }
 
 .custom-input,
 .custom-textarea {
   --color: #333;
   --placeholder-color: #999;
-  font-size: 16px; /* Important: Use 16px to prevent iOS zoom */
+  font-size: 12px !important; /* Important: Use 16px to prevent iOS zoom */
   flex: 1;
 
   /* Prevent input zoom and layout shifts */

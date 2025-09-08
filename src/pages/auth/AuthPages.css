@@ -1,6 +1,34 @@
 /* AuthPages.css */
 * {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+}
+
+.status-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px auto;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.pending-text {
+  line-height: 25px;
+  text-align: center !important;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.status-icon.pending {
+  background: #c400031a;
+}
+
+.status-icon-svg.pending {
+  font-size: 48px;
+  color: #ef4444;
 }
 
 .auth-content {
@@ -95,7 +123,7 @@
 .auth-tab.active {
   background: white;
   color: #2d5831;
-border-bottom: 2px solid #2d5831;
+  border-bottom: 2px solid #2d5831;
 }
 
 .auth-tab:hover:not(.active) {
@@ -105,11 +133,12 @@ border-bottom: 2px solid #2d5831;
 /* Auth Form */
 .auth-form {
   margin-bottom: 24px;
-   padding-right: 24px;
+  padding-right: 24px;
   padding-left: 24px;
 }
 
-.auth-form,.password-section {
+.auth-form,
+.password-section {
   margin-bottom: 20px;
 }
 
@@ -146,8 +175,8 @@ border-bottom: 2px solid #2d5831;
 .auth-footer {
   text-align: center;
   padding-top: 24px;
-   padding-right: 24px;
-  padding-left: 24px;
+  padding-right: 14px;
+  padding-left: 14px;
   border-top: 1px solid #eee;
 }
 
@@ -166,7 +195,7 @@ border-bottom: 2px solid #2d5831;
 .password-label {
   font-size: 14px;
   font-weight: 500;
-  color:#636469 !important;
+  color: #636469 !important;
 }
 
 .forgot-password-link {
@@ -205,6 +234,10 @@ border-bottom: 2px solid #2d5831;
   --padding-start: 0;
   --padding-end: 0;
   font-size: 24px;
+}
+
+.resend-text {
+  color: #004225;
 }
 
 .verification-icon-container {
@@ -249,53 +282,12 @@ border-bottom: 2px solid #2d5831;
   margin-bottom: 24px;
 }
 
-.code-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
 .code-inputs-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  max-width: 240px;
   margin: 0 auto;
 }
 
 .code-input-wrapper {
   flex: 1;
-}
-
-.code-input {
-  --background: #f8f9fa;
-  --border-color: #e0e0e0;
-  --border-radius: 12px;
-  --padding-start: 0;
-  --padding-end: 0;
-  --color: #333;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  height: 56px;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.code-input:focus-within {
-  --border-color: #004225;
-  border-color: #004225;
-  box-shadow: 0 0 0 3px rgba(0, 66, 37, 0.1);
-}
-
-.code-input.has-value {
-  --border-color: #004225;
-  --background: #ffffff;
-  border-color: #004225;
 }
 
 .verify-button {
@@ -307,46 +299,19 @@ border-bottom: 2px solid #2d5831;
   margin: 20px 0;
 }
 
-.resend-text {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.resend-button {
-  --color: #004225;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: underline;
-}
-
-.resend-button:disabled {
-  --color: #999;
-  opacity: 0.6;
-}
-
 /* Animation for verification icon */
 @keyframes verificationPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .verification-icon-container {
   animation: verificationPulse 2s ease-in-out infinite;
-}
-
-/* Success state for code inputs */
-.code-input.success {
-  --border-color: #2dd36f;
-  border-color: #2dd36f;
-  --background: #f0fdf4;
-}
-
-/* Error state for code inputs */
-.code-input.error {
-  --border-color: #eb445a;
-  border-color: #eb445a;
-  --background: #fef2f2;
 }
 
 /* Responsive adjustments */
@@ -355,17 +320,7 @@ border-bottom: 2px solid #2d5831;
     font-size: 14px;
     padding: 0 16px;
   }
-  
-  .code-inputs-container {
-    gap: 8px;
-    max-width: 200px;
-  }
-  
-  .code-input {
-    height: 48px;
-    font-size: 20px;
-  }
-  
+
   .verification-title {
     font-size: 24px;
   }
@@ -376,19 +331,9 @@ border-bottom: 2px solid #2d5831;
     width: 70px;
     height: 70px;
   }
-  
+
   .verification-icon {
     font-size: 35px;
-  }
-  
-  .code-inputs-container {
-    gap: 6px;
-    max-width: 180px;
-  }
-  
-  .code-input {
-    height: 44px;
-    font-size: 18px;
   }
 }
 
@@ -397,16 +342,16 @@ border-bottom: 2px solid #2d5831;
   .auth-content {
     padding: 16px;
   }
-  
+
   .app-title {
     font-size: 18px;
   }
-  
+
   .logo-circle {
     width: 56px;
     height: 56px;
   }
-  
+
   .logo-circle ion-icon {
     font-size: 24px;
   }
@@ -455,8 +400,9 @@ border-bottom: 2px solid #2d5831;
   opacity: 0.6;
 }
 
-
-.instruction-text{
+.instruction-text {
   text-align: center !important;
   margin-bottom: 30px;
+  font-size: 12px;
 }
+

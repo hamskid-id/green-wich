@@ -1,4 +1,3 @@
-// src/types/index.ts
 export interface User {
   id: string;
   name: string;
@@ -38,7 +37,6 @@ export interface AuthState {
   checkAuth: () => Promise<void>;
 }
 
-// types/accessCode.ts
 export interface Unit {
   id: string;
   name: string;
@@ -121,4 +119,10 @@ export interface ProfileCardProps {
   children: React.ReactNode;
   icon?: string;
   className?: string;
+}
+
+export interface ApiResponse<T> {
+  status: string;
+  message: string;
+  data: T;
 }

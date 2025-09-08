@@ -6,6 +6,9 @@ import { useAuthStore } from "../../stores/authStore";
 import "./AuthPages.css";
 import CustomInput from "../../components/ui/customInput/CustomInput";
 import CustomButton from "../../components/ui/customButton/CustomButton";
+import { AxiosResponse } from "axios";
+import { LoginResponse } from "../../types/auth";
+import { ApiResponse } from "../../types";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -18,8 +21,15 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (): Promise<void> => {
     try {
-      await login({ email: email, password: password });
-      history.push("/home");
+      const response: AxiosResponse<ApiResponse<LoginResponse>> = await login({
+        email: email,
+        password: password,
+      });
+      if (response?.data?.data?.user?.status !== "active") {
+        history.push("/account-in-progress");
+      } else {
+        history.push("/home");
+      }
     } catch (error: any) {
       setToastMessage(error.message || "Login failed");
       setShowToast(true);
