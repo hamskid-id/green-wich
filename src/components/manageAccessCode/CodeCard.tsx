@@ -10,8 +10,6 @@ import {
 import {
   arrowRedoSharp,
   trashOutline,
-  copyOutline,
-  checkmarkSharp,
 } from "ionicons/icons";
 import { AccessCode } from "../../types";
 import { formatDate } from "../../utils/helpers";
@@ -51,7 +49,7 @@ const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
   };
 
   return (
-    <IonCard className="code-card">
+    <IonCard className="code-card" onClick={handleCopy}>
       <IonCardContent>
         <div className="code-header">
           <h3 className="code-name">{code.visitor_name}</h3>
@@ -97,13 +95,6 @@ const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
             <IonLabel>
               <strong>Code: {code.code}</strong>
             </IonLabel>
-            <button
-              className="action-button copy"
-              aria-label={`Copy code ${code.code}`}
-              onClick={handleCopy}
-            >
-              <IonIcon icon={copied ? checkmarkSharp : copyOutline} />
-            </button>
           </div>
         </div>
       </IonCardContent>
