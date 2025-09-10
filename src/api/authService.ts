@@ -11,8 +11,9 @@ export const authService = {
   login: async (
     credentials: LoginCredentials
   ): Promise<AxiosResponse<ApiResponse<LoginResponse>>> => {
-    return (
-      apiClient.post <ApiResponse<LoginResponse>>("/auth/login", credentials)
+    return apiClient.post<ApiResponse<LoginResponse>>(
+      "/auth/login",
+      credentials
     );
   },
 
@@ -45,6 +46,7 @@ export const authService = {
   resetPassword: async (
     code: string,
     newPassword: string,
+    confirmPassword: string,
     contactInfo: string
   ): Promise<void> => {
     const isEmail = contactInfo.includes("@");
@@ -53,7 +55,7 @@ export const authService = {
           email: contactInfo,
           code: parseInt(code),
           password: newPassword,
-          password_confirmation: newPassword,
+          password_confirmation: confirmPassword,
         }
       : {
           phoneNumber: contactInfo,
