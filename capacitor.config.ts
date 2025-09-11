@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: "com.hamskid.greenwichApp",
-  appName: "green-wich",
+  appName: "Green wich",
   webDir: "dist",
   plugins: {
     SplashScreen: {
