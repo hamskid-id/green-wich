@@ -15,6 +15,7 @@ import CustomInput from "../../components/ui/customInput/CustomInput";
 import CustomButton from "../../components/ui/customButton/CustomButton";
 import { useApi } from "../../hooks/useApi";
 import { Unit } from "../../types";
+import { sortUnitsAlphabetically } from "../../utils/helpers";
 
 const RegisterPage: React.FC = () => {
   const [first_name, setfirst_name] = useState<string>("");
@@ -138,7 +139,7 @@ const RegisterPage: React.FC = () => {
                 onIonChange={(e) => setunit_id(e.detail.value)}
                 interface="action-sheet"
               >
-                {unitList?.map((unit) => (
+                {sortUnitsAlphabetically(unitList ?? []).map((unit) => (
                   <IonSelectOption key={unit.id} value={unit.id}>
                     {unit.residence.name} - {unit.name} ({unit.type}{" "}
                     {unit.number})

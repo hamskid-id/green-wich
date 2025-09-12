@@ -1,4 +1,5 @@
 import { CustomInputProps } from "../components/ui/customInput/CustomInput";
+import { Unit } from "../types";
 
 // Helper to build query string from pagination params
 export const buildQueryString = (params: Record<string, any>): string => {
@@ -101,4 +102,12 @@ export const getInputMode = (type: CustomInputProps["type"]) => {
     default:
       return "text";
   }
+};
+
+export const sortUnitsAlphabetically = (units: Unit[]) => {
+  return units.slice().sort((a, b) => {
+    const nameA = `${a.residence.name} ${a.name} ${a.number}`.toLowerCase();
+    const nameB = `${b.residence.name} ${b.name} ${b.number}`.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
 };
