@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { IonPage, IonContent, IonText, IonToast } from "@ionic/react";
+import {
+  IonPage,
+  IonContent,
+  IonText,
+  IonToast,
+  IonSelect,
+  IonSelectOption,
+} from "@ionic/react";
 import { call, lockClosed, person, home } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";
 import "./AuthPages.css";
 import CustomInput from "../../components/ui/customInput/CustomInput";
 import CustomButton from "../../components/ui/customButton/CustomButton";
+import { useApi } from "../../hooks/useApi";
+import { Unit } from "../../types";
 
 const RegisterPage: React.FC = () => {
   const [first_name, setfirst_name] = useState<string>("");
@@ -18,6 +27,15 @@ const RegisterPage: React.FC = () => {
     useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
+
+  const { useInfinitePaginated } = useApi();
+
+  const { data, isLoading: unitIsLoading } = useInfinitePaginated<Unit>(
+    ["unit"],
+    `/units`
+  );
+
+  const unitList = data?.pages.flatMap((page) => page.data.data);
 
   const { register, isLoading } = useAuthStore();
   const history = useHistory();
@@ -39,7 +57,6 @@ const RegisterPage: React.FC = () => {
         password,
         password_confirmation,
       });
-      // Registration successful - maybe redirect to verification page or login
       history.push("/verify-email", { email });
     } catch (error: any) {
       setToastMessage(error.message || "Registration failed");
@@ -52,7 +69,7 @@ const RegisterPage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="auth-content">
+      <IonContent className="auth-content" fullscreen>
         <div className="auth-container">
           {/* Logo Section */}
           <div className="logo-section">
@@ -91,7 +108,7 @@ const RegisterPage: React.FC = () => {
               type="text"
               value={first_name}
               onIonInput={(e) => setfirst_name(e.detail.value!)}
-              placeholder="Enter your full name"
+              placeholder="Enter your first name"
             />
             <CustomInput
               icon={person}
@@ -110,14 +127,25 @@ const RegisterPage: React.FC = () => {
               placeholder="+234 800 123 4567"
             />
 
-            <CustomInput
-              icon={home}
-              label="Unit Id"
-              type="text"
-              value={unit_id}
-              onIonInput={(e) => setunit_id(e.detail.value!)}
-              placeholder="e.g., A-101, B-205"
-            />
+            <div className="custom-select-wrapper">
+              <label className="select-label">Select A Unit</label>
+              <IonSelect
+                className="full-width-select"
+                value={unit_id}
+                placeholder={
+                  unitIsLoading ? "Loading units..." : "Choose a unit"
+                }
+                onIonChange={(e) => setunit_id(e.detail.value)}
+                interface="action-sheet"
+              >
+                {unitList?.map((unit) => (
+                  <IonSelectOption key={unit.id} value={unit.id}>
+                    {unit.residence.name} - {unit.name} ({unit.type}{" "}
+                    {unit.number})
+                  </IonSelectOption>
+                ))}
+              </IonSelect>
+            </div>
 
             <CustomInput
               icon={lockClosed}

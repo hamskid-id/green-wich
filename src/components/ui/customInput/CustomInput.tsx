@@ -12,8 +12,9 @@ import type {
   TextareaChangeEventDetail,
 } from "@ionic/core";
 import "./CustomInput.css";
+import { getInputMode } from "../../../utils/helpers";
 
-interface CustomInputProps {
+export interface CustomInputProps {
   icon?: string;
   label?: string;
   type?:
@@ -78,6 +79,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
         ) : (
           <IonInput
             type={type}
+            inputMode={getInputMode(type)}
             value={value}
             onIonInput={onIonInput}
             placeholder={placeholder}

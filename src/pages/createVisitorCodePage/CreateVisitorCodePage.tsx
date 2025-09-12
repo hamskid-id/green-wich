@@ -134,7 +134,7 @@ const CreateVisitorCodePage: React.FC = () => {
           label="Visit Purpose"
           value={visitPurpose}
           onIonInput={(e) => setVisitPurpose(e.detail.value!)}
-          placeholder="Select purpose"
+          placeholder="Enter visit's purpose"
         />
 
         <div className="visitor-type-section">

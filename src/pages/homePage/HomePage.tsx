@@ -68,7 +68,7 @@ const HomePage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent className="ion-padding">
+      <IonContent className="ion-padding" >
         {isLoading ? (
           <Spinner />
         ) : (

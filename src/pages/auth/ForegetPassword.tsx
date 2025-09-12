@@ -291,16 +291,7 @@ const ForgotPasswordPage: React.FC = () => {
             )}
 
             <div className="support-link">
-              <IonText color="medium">
-                Need help?{" "}
-                <IonText
-                  color="primary"
-                  onClick={() => history.push("/support")}
-                  style={{ cursor: "pointer", textDecoration: "underline" }}
-                >
-                  Contact Support
-                </IonText>
-              </IonText>
+              <IonText color="medium">Need help? Contact support</IonText>
             </div>
           </div>
 

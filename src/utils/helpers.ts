@@ -1,3 +1,5 @@
+import { CustomInputProps } from "../components/ui/customInput/CustomInput";
+
 // Helper to build query string from pagination params
 export const buildQueryString = (params: Record<string, any>): string => {
   const searchParams = new URLSearchParams();
@@ -83,5 +85,20 @@ export const calculateRemainingTime = (
   } else {
     const remainingSeconds = Math.floor(remainingMilliseconds / 1000);
     return { value: remainingSeconds, unit: "sec" };
+  }
+};
+
+export const getInputMode = (type: CustomInputProps["type"]) => {
+  switch (type) {
+    case "number":
+      return "numeric";
+    case "text":
+    case "email":
+    case "tel":
+    case "url":
+    case "search":
+      return type;
+    default:
+      return "text";
   }
 };

@@ -38,7 +38,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="auth-content">
+      <IonContent className="auth-content" fullscreen>
         <div className="auth-container">
           {/* Logo Section */}
           <div className="logo-section">

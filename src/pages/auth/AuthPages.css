@@ -403,3 +403,27 @@
   font-size: 14px;
 }
 
+.custom-select-wrapper {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.select-label {
+  font-size: 14px;
+  color: #636469 !important;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.full-width-select {
+  width: 100%;
+  --background: #f8f9fa;
+  --border-radius: 8px !important;
+  border-radius: 8px !important;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  margin-bottom: 4px;
+  border: 1px solid #e0e0e0;
+  min-height: 48px !important;
+}

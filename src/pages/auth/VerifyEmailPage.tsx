@@ -30,14 +30,12 @@ const VerifyEmailPage: React.FC = () => {
   const history = useHistory();
   const location = useLocation<LocationState>();
 
-  // Set email from navigation state if available
   useEffect(() => {
     if (location.state?.email) {
       setEmail(location.state.email);
     }
   }, [location.state]);
 
-  // Countdown timer for resend button
   useEffect(() => {
     if (countdown > 0) {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -45,7 +43,6 @@ const VerifyEmailPage: React.FC = () => {
     }
   }, [countdown]);
 
-  // Auto-submit when OTP is complete
   useEffect(() => {
     if (verificationCode.length === 4) {
       handleVerifyEmail();
@@ -102,7 +99,7 @@ const VerifyEmailPage: React.FC = () => {
       await resendVerificationCode(email);
       setVerificationCode("");
       showToastMessage("Verification code sent to your email", "toast-success");
-      setCountdown(60); // 60 second countdown
+      setCountdown(60);
     } catch (error: any) {
       showToastMessage(
         error.message || "Failed to resend verification code",
@@ -119,7 +116,7 @@ const VerifyEmailPage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="auth-content">
+      <IonContent className="auth-content" fullscreen>
         <div className="auth-container">
           {/* Logo Section */}
           <div className="logo-section">
@@ -192,16 +189,7 @@ const VerifyEmailPage: React.FC = () => {
             )}
 
             <div className="support-link">
-              <IonText color="medium">
-                Need help?{" "}
-                <IonText
-                  color="primary"
-                  onClick={() => history.push("/support")}
-                  style={{ cursor: "pointer", textDecoration: "underline" }}
-                >
-                  Contact Support
-                </IonText>
-              </IonText>
+              <IonText color="medium">Need help? Contact support</IonText>
             </div>
           </div>
 

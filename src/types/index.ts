@@ -14,7 +14,7 @@ export interface Visitor {
   code: string;
   startTime: string;
   endTime: string;
-  status: 'scheduled' | 'active' | 'completed' | 'cancelled';
+  status: "scheduled" | "active" | "completed" | "cancelled";
   notes?: string;
 }
 
@@ -24,7 +24,7 @@ export interface Notification {
   message: string;
   timestamp: string;
   read: boolean;
-  type: 'info' | 'warning' | 'alert' | 'success';
+  type: "info" | "warning" | "alert" | "success";
 }
 
 export interface AuthState {
@@ -125,4 +125,15 @@ export interface ApiResponse<T> {
   status: string;
   message: string;
   data: T;
+}
+
+export interface Unit {
+  id: string;
+  name: string;
+  type: string;
+  number: number;
+  residence: {
+    id: string;
+    name: string;
+  };
 }
