@@ -1,4 +1,3 @@
-// src/pages/NotificationsPage.tsx
 import React from "react";
 import {
   IonPage,

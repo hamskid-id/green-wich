@@ -30,7 +30,7 @@ import {
   formatTimeDisplay,
   formatTimeRemaining,
 } from "../../utils/helpers";
-import ShareModal from "../../components/ui/shareAccessCodeModal.tsx copy/ShareAccessCodeModal";
+import ShareModal from "../../components/ui/shareCodeModal/ShareAccessCodeModal";
 
 interface LocationState {
   codeData: AccessCode;
@@ -91,7 +91,6 @@ const CodeGeneratedSuccessPage: React.FC = () => {
 
   // Determine what time information to display
   const getTimeDisplayText = () => {
-
     if (isExpired) {
       return "Expired";
     }

@@ -19,10 +19,10 @@ import AlertModal from "../../components/ui/alertModal/AlertModal";
 import { useApi } from "../../hooks/useApi";
 import { AccessCode } from "../../types";
 import { useHistory } from "react-router";
-import FilterBar from "../../components/manageAccessCode/FilterBar";
-import EmptyState from "../../components/manageAccessCode/EmptyState";
-import CodeCard from "../../components/manageAccessCode/CodeCard";
-import ShareModal from "../../components/ui/shareAccessCodeModal.tsx copy/ShareAccessCodeModal";
+import FilterBar from "./FilterBar";
+import EmptyState from "./EmptyState";
+import CodeCard from "./CodeCard";
+import ShareModal from "../../components/ui/shareCodeModal/ShareAccessCodeModal";
 
 const ManageAccessCodesPage: React.FC = () => {
   const history = useHistory();
@@ -47,10 +47,7 @@ const ManageAccessCodesPage: React.FC = () => {
     { limit: 25 }
   );
 
-  const {
-    mutate: deleteCode,
-    error: deleteError,
-  } = useDynamicDelete<void>();
+  const { mutate: deleteCode, error: deleteError } = useDynamicDelete<void>();
   const rawCodes = data?.pages.flatMap((page) => page.data.data) ?? [];
 
   const processedCodes = useMemo(() => {
@@ -205,14 +202,8 @@ const ManageAccessCodesPage: React.FC = () => {
           }}
           disabled={!hasNextPage}
         >
-          <IonInfiniteScrollContent loadingText="Loading more access codes..." />
+          <IonInfiniteScrollContent />
         </IonInfiniteScroll>
-
-        {isFetchingNextPage && (
-          <div className="ion-text-center" aria-live="polite">
-            <IonSpinner name="crescent" />
-          </div>
-        )}
 
         <AlertModal
           isOpen={isAlertModalOpen}
