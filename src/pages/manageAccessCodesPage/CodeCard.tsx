@@ -12,7 +12,7 @@ import {
   trashOutline,
 } from "ionicons/icons";
 import { AccessCode } from "../../types";
-import { formatDate } from "../../utils/helpers";
+import { capitalizeFirstLetter, formatDate } from "../../utils/helpers";
 
 interface Props {
   code: AccessCode & { remaining?: { value: number; unit: string } };
@@ -52,11 +52,11 @@ const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
     <IonCard className="code-card" onClick={handleCopy}>
       <IonCardContent>
         <div className="code-header">
-          <h3 className="code-name">{code.visitor_name}</h3>
+          <h3 className="code-name">{capitalizeFirstLetter(code.visitor_name)}</h3>
           <div className="code-actions">
             <button
               className={`action-button share ${!isActive ? "disabled" : ""}`}
-              aria-label={`Share code for ${code.visitor_name}`}
+              aria-label={`Share code for ${capitalizeFirstLetter(code.visitor_name)}`}
               onClick={() => onShare(code)}
               disabled={!isActive}
             >
@@ -64,7 +64,7 @@ const CodeCard: React.FC<Props> = ({ code, onShare, onDelete }) => {
             </button>
             <button
               className={`action-button delete ${!isActive ? "disabled" : ""}`}
-              aria-label={`Delete code for ${code.visitor_name}`}
+              aria-label={`Delete code for ${capitalizeFirstLetter(code.visitor_name)}`}
               onClick={() => onDelete(code)}
               disabled={!isActive}
             >

@@ -26,6 +26,7 @@ import "./CodeGeneratedSuccessPage.css";
 import { useLocation, useHistory } from "react-router";
 import { AccessCode, CodeData } from "../../types";
 import {
+  capitalizeFirstLetter,
   formatDate,
   formatTimeDisplay,
   formatTimeRemaining,
@@ -193,7 +194,7 @@ const CodeGeneratedSuccessPage: React.FC = () => {
               <IonIcon icon={person} slot="start" className="summary-icon" />
               <IonLabel>
                 <h4>Visitor Name</h4>
-                <p>{codeData.visitor_name}</p>
+                <p>{capitalizeFirstLetter(codeData.visitor_name)}</p>
               </IonLabel>
             </IonItem>
 
@@ -206,7 +207,7 @@ const CodeGeneratedSuccessPage: React.FC = () => {
                 />
                 <IonLabel>
                   <h4>Purpose</h4>
-                  <p>{codeData.purpose}</p>
+                  <p>{capitalizeFirstLetter(codeData.purpose)}</p>
                 </IonLabel>
               </IonItem>
             )}
@@ -230,7 +231,7 @@ const CodeGeneratedSuccessPage: React.FC = () => {
               <IonItem className="summary-item" lines="none">
                 <IonLabel>
                   <h4>Additional Details</h4>
-                  <p>{codeData.notes}</p>
+                  <p>{capitalizeFirstLetter(codeData.notes)}</p>
                 </IonLabel>
               </IonItem>
             )}

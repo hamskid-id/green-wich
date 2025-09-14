@@ -8,7 +8,6 @@ import {
   IonButton,
   IonIcon,
   IonToast,
-  IonSpinner,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonProgressBar,
