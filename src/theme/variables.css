@@ -5,6 +5,10 @@ ion-tab-button.tab-selected {
   color: #004225 !important;
 }
 
+:root {
+  color-scheme: light; /* Prevents system dark mode from changing Ionic's theme */
+}
+
 ion-content {
   --keyboard-offset: 0px !important;
 }
@@ -57,6 +61,11 @@ ion-toast.toast-danger {
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
+   body {
+    --ion-background-color: #ffffff !important;
+    --ion-text-color: #000000 !important;
+  }
+  
   ion-toast.toast-success {
     --color: #10b981;
     --background: #064e3b;

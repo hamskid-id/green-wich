@@ -2,15 +2,10 @@
 import React from "react";
 import {
   IonModal,
-  IonContent,
-  IonButton,
   IonIcon,
-  IonBackdrop,
 } from "@ionic/react";
 import {
   warning,
-  trash,
-  close,
   checkmark,
   alertCircle,
   informationCircle,

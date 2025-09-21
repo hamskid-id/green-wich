@@ -41,6 +41,10 @@ const App: React.FC = () => {
   const [isAppReady, setIsAppReady] = useState(false);
 
   useEffect(() => {
+    document.body.classList.remove("dark"); // Ensure dark mode class is removed
+  }, []);
+
+  useEffect(() => {
     // Give the store time to rehydrate from persistence
     const timer = setTimeout(() => {
       setIsAppReady(true);

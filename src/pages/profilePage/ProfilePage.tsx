@@ -23,9 +23,9 @@ import {
 import "./ProfilePage.css";
 import { ProfileData } from "../../types";
 import { ApiResponse, useApi } from "../../hooks/useApi";
-import ProfileCard from "../../components/profilePage/ProfileCard";
-import ProfileInfo from "../../components/profilePage/ProfileInfo";
-import ProfileActions from "../../components/profilePage/ProfileActions";
+import ProfileCard from "../../components/profile-page/ProfileCard";
+import ProfileInfo from "../../components/profile-page/ProfileInfo";
+import ProfileActions from "../../components/profile-page/ProfileActions";
 import CustomButton from "../../components/ui/customButton/CustomButton";
 
 const AppHeader: React.FC = () => (
