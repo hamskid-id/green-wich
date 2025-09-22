@@ -8,18 +8,14 @@ import {
   IonLabel,
 } from "@ionic/react";
 import { Route, Redirect } from "react-router-dom";
-import {
-  home,
-  qrCodeOutline,
-  person,
-} from "ionicons/icons";
-import HomePage from "../../pages/homePage/HomePage";
-import CreateVisitorCodePage from "../../pages/createVisitorCodePage/CreateVisitorCodePage";
-import ManageAccessCodesPage from "../../pages/manageAccessCodesPage/ManageAccessCodesPage";
-import NotificationsPage from "../../pages/notificationsPage/NotificationsPage";
-import HistoryLogsPage from "../../pages/historyLogsPage/HistoryLogsPage";
-import CodeGeneratedSuccessPage from "../../pages/successCodePage/CodeGeneratedSuccessPage";
-import ProfilePage from "../../pages/profilePage/ProfilePage";
+import { home, qrCodeOutline, person } from "ionicons/icons";
+import HomePage from "../../pages/home-page/HomePage";
+import CreateVisitorCodePage from "../../pages/create-visitors-code/CreateVisitorCodePage";
+import CodeGeneratedSuccessPage from "../../pages/success-code/CodeGeneratedSuccessPage";
+import NotificationsPage from "../../pages/notifications/NotificationsPage";
+import HistoryLogsPage from "../../pages/history-logs/HistoryLogsPage";
+import ManageAccessCodesPage from "../../pages/manage-accesscode/ManageAccessCodesPage";
+import ProfilePage from "../../pages/profile/ProfilePage";
 
 const MobileLayout: React.FC = () => {
   return (

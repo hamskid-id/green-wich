@@ -14,14 +14,14 @@ import {
 } from "@ionic/react";
 import { arrowBack, trash, close } from "ionicons/icons";
 import "./ManageAccessCodesPage.css";
-import AlertModal from "../../components/ui/alertModal/AlertModal";
+import AlertModal from "../../components/ui/alert-modal/AlertModal";
 import { useApi } from "../../hooks/useApi";
 import { AccessCode } from "../../types";
 import { useHistory } from "react-router";
 import FilterBar from "./FilterBar";
 import EmptyState from "./EmptyState";
 import CodeCard from "./CodeCard";
-import ShareModal from "../../components/ui/shareCodeModal/ShareAccessCodeModal";
+import ShareModal from "../../components/ui/share-code-modal/ShareAccessCodeModal";
 
 const ManageAccessCodesPage: React.FC = () => {
   const history = useHistory();

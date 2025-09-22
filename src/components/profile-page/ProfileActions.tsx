@@ -1,41 +1,15 @@
 import React, { useState } from "react";
-import {
-  IonButton,
-  IonIcon,
-  IonAlert,
-  IonSpinner,
-  IonList,
-  IonItem,
-  IonLabel,
-} from "@ionic/react";
-import {
-  logOutOutline,
-  createOutline,
-  shieldCheckmarkOutline,
-  settingsOutline,
-  helpCircleOutline,
-  trash,
-  close,
-} from "ionicons/icons";
+import { IonButton, IonIcon, IonSpinner } from "@ionic/react";
+import { logOutOutline, trash, close } from "ionicons/icons";
 import { useAuthStore } from "../../stores/authStore";
-import AlertModal from "../ui/alertModal/AlertModal";
+import AlertModal from "../ui/alert-modal/AlertModal";
 import { useHistory } from "react-router";
 
 interface ProfileActionsProps {
-  onEditProfile?: () => void;
-  onChangePassword?: () => void;
-  onSettings?: () => void;
-  onHelp?: () => void;
   className?: string;
 }
 
-const ProfileActions: React.FC<ProfileActionsProps> = ({
-  // onEditProfile,
-  // onChangePassword,
-  // onSettings,
-  // onHelp,
-  className = "",
-}) => {
+const ProfileActions: React.FC<ProfileActionsProps> = ({ className = "" }) => {
   const [showLogoutAlert, setShowLogoutAlert] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const { logout } = useAuthStore();
@@ -54,67 +28,8 @@ const ProfileActions: React.FC<ProfileActionsProps> = ({
     }
   };
 
-  //   const actionItems = [
-  //     {
-  //       id: "edit-profile",
-  //       label: "Edit Profile",
-  //       icon: createOutline,
-  //       onClick: onEditProfile,
-  //       ariaLabel: "Edit your profile information",
-  //       available: !!onEditProfile,
-  //     },
-  //     {
-  //       id: "change-password",
-  //       label: "Change Password",
-  //       icon: shieldCheckmarkOutline,
-  //       onClick: onChangePassword,
-  //       ariaLabel: "Change your account password",
-  //       available: !!onChangePassword,
-  //     },
-  //     {
-  //       id: "settings",
-  //       label: "Settings",
-  //       icon: settingsOutline,
-  //       onClick: onSettings,
-  //       ariaLabel: "Access application settings",
-  //       available: !!onSettings,
-  //     },
-  //     {
-  //       id: "help",
-  //       label: "Help & Support",
-  //       icon: helpCircleOutline,
-  //       onClick: onHelp,
-  //       ariaLabel: "Get help and support",
-  //       available: !!onHelp,
-  //     },
-  //   ];
-
   return (
     <div className={`profile-actions ${className}`}>
-      {/* Action Items */}
-      {/* <IonList className="action-list" role="menu" aria-label="Profile actions">
-        {actionItems
-          .filter((item) => item.available)
-          .map((item) => (
-            <IonItem
-              key={item.id}
-              button
-              onClick={item.onClick}
-              className="action-item"
-              role="menuitem"
-              aria-label={item.ariaLabel}
-            >
-              <IonIcon
-                icon={item.icon}
-                slot="start"
-                className="action-icon"
-                aria-hidden="true"
-              />
-              <IonLabel className="action-label">{item.label}</IonLabel>
-            </IonItem>
-          ))}
-      </IonList> */}
-
       {/* Logout Section */}
       <div className="logout-section">
         <IonButton

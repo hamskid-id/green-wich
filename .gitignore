@@ -5,6 +5,18 @@
 /.pnp
 .pnp.js
 
+# Android / Gradle
+android/.gradle/
+android/.idea/
+android/local.properties
+android/.gradle.properties
+android/captures/
+android/.cxx/
+android/build/
+
+# production
+/build
+
 # testing
 /coverage
 

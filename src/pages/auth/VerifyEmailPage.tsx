@@ -9,7 +9,7 @@ import {
 import { useHistory, useLocation } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";
 import "./AuthPages.css";
-import CustomButton from "../../components/ui/customButton/CustomButton";
+import CustomButton from "../../components/ui/custom-button/CustomButton";
 
 interface LocationState {
   email?: string;

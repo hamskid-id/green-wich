@@ -21,7 +21,7 @@ import {
   clipboard,
   arrowRedoSharp,
 } from "ionicons/icons";
-import CustomButton from "../../components/ui/customButton/CustomButton";
+import CustomButton from "../../components/ui/custom-button/CustomButton";
 import "./CodeGeneratedSuccessPage.css";
 import { useLocation, useHistory } from "react-router";
 import { AccessCode, CodeData } from "../../types";
@@ -31,7 +31,7 @@ import {
   formatTimeDisplay,
   formatTimeRemaining,
 } from "../../utils/helpers";
-import ShareModal from "../../components/ui/shareCodeModal/ShareAccessCodeModal";
+import ShareModal from "../../components/ui/share-code-modal/ShareAccessCodeModal";
 
 interface LocationState {
   codeData: AccessCode;

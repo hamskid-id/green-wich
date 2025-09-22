@@ -18,8 +18,8 @@ import {
   IonRadio,
 } from "@ionic/react";
 import { person, calendar, time, documentText, people } from "ionicons/icons";
-import CustomInput from "../../components/ui/customInput/CustomInput";
-import CustomButton from "../../components/ui/customButton/CustomButton";
+import CustomInput from "../../components/ui/custom-input/CustomInput";
+import CustomButton from "../../components/ui/custom-button/CustomButton";
 import "./CreateVisitorCodePage.css";
 import { useHistory } from "react-router";
 import { ApiResponse, useApi } from "../../hooks/useApi";

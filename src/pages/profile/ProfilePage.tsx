@@ -26,7 +26,7 @@ import { ApiResponse, useApi } from "../../hooks/useApi";
 import ProfileCard from "../../components/profile-page/ProfileCard";
 import ProfileInfo from "../../components/profile-page/ProfileInfo";
 import ProfileActions from "../../components/profile-page/ProfileActions";
-import CustomButton from "../../components/ui/customButton/CustomButton";
+import CustomButton from "../../components/ui/custom-button/CustomButton";
 
 const AppHeader: React.FC = () => (
   <IonHeader className="app-header">

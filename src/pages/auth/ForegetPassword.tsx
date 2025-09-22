@@ -9,8 +9,8 @@ import {
 import { call, lockClosed, mail } from "ionicons/icons";
 import { useHistory } from "react-router-dom";
 import "./AuthPages.css";
-import CustomInput from "../../components/ui/customInput/CustomInput";
-import CustomButton from "../../components/ui/customButton/CustomButton";
+import CustomInput from "../../components/ui/custom-input/CustomInput";
+import CustomButton from "../../components/ui/custom-button/CustomButton";
 import { useAuth } from "../../hooks/useAuth";
 
 const ForgotPasswordPage: React.FC = () => {
@@ -192,8 +192,8 @@ const ForgotPasswordPage: React.FC = () => {
                   </IonText>
                 </div>
                 <CustomInput
-                  icon={isEmail ? mail : call}
-                  type={isEmail ? "email" : "tel"}
+                  icon={mail}
+                  type={"email"}
                   value={contactInfo}
                   onIonInput={(e) => setContactInfo(e.detail.value!)}
                   placeholder="email@example.com"

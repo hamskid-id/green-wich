@@ -1,4 +1,4 @@
-import { CustomInputProps } from "../components/ui/customInput/CustomInput";
+import { CustomInputProps } from "../components/ui/custom-input/CustomInput";
 import { Unit } from "../types";
 
 // Helper to build query string from pagination params

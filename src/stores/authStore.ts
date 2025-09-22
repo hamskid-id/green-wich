@@ -9,7 +9,7 @@ import {
 } from "../types/auth";
 import { AxiosResponse } from "axios";
 import { capacitorStorage } from "../utils/storage";
-import { authService } from "../api/authService";
+import { authService } from "../api/auth-service";
 import { ApiResponse } from "../types";
 
 export const useAuthStore = create<AuthState>()(

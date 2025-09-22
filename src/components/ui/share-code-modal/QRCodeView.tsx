@@ -3,7 +3,7 @@ import { IonCard, IonCardContent, IonBadge, IonIcon } from "@ionic/react";
 import { arrowRedoSharp } from "ionicons/icons";
 import { AccessCode } from "../../../types";
 import { calculateRemainingTime } from "../../../utils/helpers";
-import CustomButton from "../customButton/CustomButton";
+import CustomButton from "../custom-button/CustomButton";
 import { ShareActions } from "../../../hooks/useShareActions";
 
 interface QRCodeViewProps {
