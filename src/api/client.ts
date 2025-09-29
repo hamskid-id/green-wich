@@ -3,7 +3,7 @@ import { useAuthStore } from "../stores/authStore";
 
 const apiClient = axios.create({
   baseURL:
-    process.env.REACT_APP_API_BASE_URL ||
+    import.meta.env.VITE_API_BASE_URL ||
     "https://phplaravel-1494556-5705857.cloudwaysapps.com/v1",
   timeout: 20000,
 });

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IonItem,
   IonLabel,
   IonInput,
   IonIcon,
   IonTextarea,
+  IonButton,
 } from "@ionic/react";
 import type { InputCustomEvent, TextareaCustomEvent } from "@ionic/react";
 import type {
@@ -13,6 +14,7 @@ import type {
 } from "@ionic/core";
 import "./CustomInput.css";
 import { getInputMode } from "../../../utils/helpers";
+import { eye, eyeOff } from "ionicons/icons";
 
 export interface CustomInputProps {
   icon?: string;
@@ -57,6 +59,8 @@ const CustomInput: React.FC<CustomInputProps> = ({
   className = "",
   ...props
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className={`custom-input-container ${className}`}>
       {label && <div className="input-label">{label}</div>}
@@ -65,6 +69,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
         className={`custom-input-item ${multiline ? "multiline" : ""}`}
       >
         {icon && <IonIcon icon={icon} slot="start" className="input-icon" />}
+
         {multiline ? (
           <IonTextarea
             value={value}
@@ -78,7 +83,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
           />
         ) : (
           <IonInput
-            type={type}
+            type={type === "password" && !showPassword ? "password" : "text"}
             inputMode={getInputMode(type)}
             value={value}
             onIonInput={onIonInput}
@@ -88,6 +93,17 @@ const CustomInput: React.FC<CustomInputProps> = ({
             className="custom-input"
             {...props}
           />
+        )}
+
+        {/* Toggle password visibility */}
+        {type === "password" && (
+          <IonButton
+            slot="end"
+            fill="clear"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            <IonIcon className="eye-icon" icon={showPassword ? eyeOff : eye} />
+          </IonButton>
         )}
       </IonItem>
     </div>

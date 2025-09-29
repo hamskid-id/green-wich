@@ -14,6 +14,9 @@
   margin-bottom: 8px;
   font-weight: 500;
 }
+.eye-icon{
+  color: #999;
+}
 
 ion-item.custom-input-item {
   height: 48px !important;
