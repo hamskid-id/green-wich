@@ -141,7 +141,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         }
       />
 
-      <InfoItem
+      {/* <InfoItem
         label="Unit"
         value={profile.unit?.name || "Not assigned"}
         ariaLabel={`Unit: ${profile.unit?.name || "Not assigned"}`}
@@ -166,7 +166,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
         ariaLabel={`Residence: ${
           profile.unit?.residence?.name || "Not assigned"
         }`}
-      />
+      /> */}
     </IonList>
   );
 };

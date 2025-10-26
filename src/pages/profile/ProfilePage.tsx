@@ -176,11 +176,11 @@ const ProfilePage: React.FC = () => {
                     <h3 className="unit-name">
                       {profileInformation?.unit?.name}
                     </h3>
-                    <p className="unit-residence">
+                    {/* <p className="unit-residence">
                       {profileInformation?.unit?.residence?.name} -{" "}
                       {profileInformation?.unit?.type} #
                       {profileInformation?.unit?.number}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               )}
