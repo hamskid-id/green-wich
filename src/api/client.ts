@@ -4,7 +4,7 @@ import { useAuthStore } from "../stores/authStore";
 const apiClient = axios.create({
   baseURL:
     import.meta.env.VITE_API_BASE_URL ||
-    "https://phplaravel-1494556-5705857.cloudwaysapps.com/v1",
+    "https://phplaravel-1536314-5930059.cloudwaysapps.com/v1",
   timeout: 20000,
 });
 
